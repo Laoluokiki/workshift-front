@@ -5,16 +5,16 @@ import { FullComponent } from './layouts/full/full.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'main',
     component: FullComponent,
     children: [
+      // {
+      //   path: '',
+      //   redirectTo: '/dashboard',
+      //   pathMatch: 'full',
+      // },
       {
         path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full',
-      },
-      {
-        path: 'dashboard',
         loadChildren: () =>
           import('./pages/pages.module').then((m) => m.PagesModule),
       },
@@ -36,6 +36,13 @@ const routes: Routes = [
     path: '',
     component: BlankComponent,
     children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/authentication/authentication.module').then(
+            (m) => m.AuthenticationModule
+          ),
+      },
       {
         path: 'authentication',
         loadChildren: () =>

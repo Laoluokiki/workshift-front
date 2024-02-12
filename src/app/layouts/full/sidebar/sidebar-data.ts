@@ -7,7 +7,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/main',
   },
   {
     navCap: 'Ui Components',
@@ -15,27 +15,27 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Badge',
     iconName: 'rosette',
-    route: '/ui-components/badge',
+    route: '/main/ui-components/badge',
   },
   {
     displayName: 'Chips',
     iconName: 'poker-chip',
-    route: '/ui-components/chips',
+    route: '/main/ui-components/chips',
   },
   {
     displayName: 'Lists',
     iconName: 'list',
-    route: '/ui-components/lists',
+    route: '/main/ui-components/lists',
   },
   {
     displayName: 'Menu',
     iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
+    route: '/main/ui-components/menu',
   },
   {
     displayName: 'Tooltips',
     iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    route: '/main/ui-components/tooltips',
   },
   {
     navCap: 'Auth',
@@ -43,7 +43,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Login',
     iconName: 'lock',
-    route: '/authentication/login',
+    route: '/',
   },
   {
     displayName: 'Register',
@@ -56,11 +56,11 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Icons',
     iconName: 'mood-smile',
-    route: '/extra/icons',
+    route: '/main/extra/icons',
   },
   {
     displayName: 'Sample Page',
     iconName: 'aperture',
-    route: '/extra/sample-page',
+    route: '/main/extra/sample-page',
   },
 ];
