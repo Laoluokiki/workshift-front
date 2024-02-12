@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -6,6 +7,12 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   baseUrl = environment.baseUrl
-  constructor() { }
-  
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  register(payload: any){
+    return this.http.post(this.baseUrl+'/create-user-account', payload)
+  }
+
 }

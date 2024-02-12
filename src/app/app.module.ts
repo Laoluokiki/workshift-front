@@ -43,6 +43,7 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
+    HttpClientModule
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
