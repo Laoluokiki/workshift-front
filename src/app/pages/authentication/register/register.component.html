@@ -15,7 +15,7 @@
             </a>
           </div>
 
-          <div class="row m-t-24 custom-row">
+          <!-- <div class="row m-t-24 custom-row">
             <div class="col-12 col-sm-6">
               <button mat-stroked-button class="w-100">
                 <div class="d-flex align-items-center">
@@ -45,20 +45,40 @@
                 </div>
               </button>
             </div>
-          </div>
+          </div> -->
 
-          <div class="or-border m-t-30">or sign up with</div>
+          <!-- <div class="or-border m-t-30">or sign up with</div> -->
 
           <form class="m-t-30">
+            
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Name</mat-label
+              >First Name</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput />
             </mat-form-field>
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+              >Last Name</mat-label
+            >
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput />
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+              >Phone Number</mat-label
+            >
+            <mat-form-field appearance="outline" type="number" class="w-100" color="primary">
+              <input matInput />
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Email Adddress</mat-label
             >
+            <mat-form-field>
+              <mat-label>Gender</mat-label>
+              <select matNativeControl required>
+                <option value="volvo">Male</option>
+                <option value="saab">Female</option>
+              </select>
+            </mat-form-field>
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput type="email" />
             </mat-form-field>
