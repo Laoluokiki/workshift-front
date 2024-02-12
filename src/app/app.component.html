@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div ngxUiLoaderBlurred [blur]="5">
+  <router-outlet></router-outlet>
+</div>
+<ngx-ui-loader
+  [pbColor]="'#5d87ff'"
+  fgsColor="#5d87ff"
+  bgsColor="#5d87ff"
+  fgsType="rectangle-bounce-pulse-out"
+></ngx-ui-loader>

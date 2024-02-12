@@ -4,17 +4,17 @@ import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 
 export const AuthenticationRoutes: Routes = [
-  
   {
-    path: '',
-    component: AppSideLoginComponent,
-  },
-  {
-    path: 'login',
+    path: 'login/:userType',
     component: AppSideLoginComponent,
   },
   {
     path: 'register',
     component: AppSideRegisterComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'login/user',
+    pathMatch: 'full',
   },
 ];
