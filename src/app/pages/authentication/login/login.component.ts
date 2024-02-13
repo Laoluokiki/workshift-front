@@ -18,7 +18,7 @@ export class AppSideLoginComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
@@ -29,7 +29,9 @@ export class AppSideLoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value,
     };
     this._auth.login(payload, this.userType).subscribe({
-      next: () => {},
+      next: () => {
+        this.router.navigate(['/main']);
+      },
     });
   }
 

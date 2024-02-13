@@ -59,7 +59,7 @@ export class IHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>
   ) {
     const statusCode = err.status;
-    const errorMessage = err?.error?.message;
+    const errorMessage = err?.error?.detail;
 
     console.log('Error Message: ', err);
 
