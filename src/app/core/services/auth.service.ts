@@ -48,24 +48,31 @@ export class AuthenticationService {
   }
 
   public login(payload: ILogin, userType: 'admin' | 'user'): Observable<any> {
+    const formData = new FormData();
+    formData.append('grant_type', '');
+    formData.append('username', payload.username);
+    formData.append('password', payload.password);
+    formData.append('scope', '');
+    formData.append('client_id', '');
+    formData.append('client_secret', '');
+
     return this.httpClient
-      .post(`${this.baseUrl}/${userType}-login`, payload)
+      .post(`${this.baseUrl}/${userType}-login`, formData)
       .pipe(
         tap((result: any) => {
           this.clearStorage();
-          const { success } = result;
-          if (success) {
-            const userInfo: UserInfoType = {
-              username: payload.username,
-              firstName: '',
-              lastName: '',
-              email: '',
-            };
 
-            this.setUserInfo(userInfo);
-            this.setToken(result.token);
-            //   this.setRefreshToken(data.refreshToken)
-          }
+          this.setToken(result.access_token);
+
+          const userInfo: UserInfoType = {
+            username: payload.username,
+            firstName: '',
+            lastName: '',
+            email: '',
+          };
+
+          this.setUserInfo(userInfo);
+          //   this.setRefreshToken(data.refreshToken)
         })
       );
   }
