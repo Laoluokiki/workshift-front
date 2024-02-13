@@ -26,6 +26,8 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { IHttpInterceptor } from './core/services/interceptor';
 import { NotifierModule } from 'angular-notifier';
+import { CalendarModule } from 'angular-calendar';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { NotifierModule } from 'angular-notifier';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CalendarModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
@@ -57,6 +60,7 @@ import { NotifierModule } from 'angular-notifier';
         },
       },
     }),
+    SharedModule
   ],
   providers: [
     {

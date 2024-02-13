@@ -2,63 +2,27 @@
   <div
     class="position-relative row w-100 h-100 bg-gredient justify-content-center"
   >
-    <div class="col-lg-4 d-flex align-items-center">
-      <mat-card class="cardWithShadow boxed-auth">
-        <mat-card-content class="p-32">
+    <div class="col-lg-6 d-flex align-items-center">
+      <mat-card class="cardWithShadow  w-100">
+        <mat-card-content class="p-16">
           <div class="text-center">
               <a [routerLink]="['/dashboard']">
                 <p class="workshift">WORK SHIFT APP</p>
               </a>
           </div>
 
-          <!-- <div class="row m-t-24 custom-row">
-            <div class="col-12 col-sm-6">
-              <button mat-stroked-button class="w-100">
-                <div class="d-flex align-items-center">
-                  <img
-                    src="/assets/images/svgs/google-icon.svg"
-                    alt="google"
-                    width="16"
-                    class="m-r-8"
-                  />
-                  Sign in with Google
-                </div>
-              </button>
-            </div>
-            <div class="col-12 col-sm-6">
-              <button
-                mat-stroked-button
-                class="w-100 d-flex align-items-center"
-              >
-                <div class="d-flex align-items-center">
-                  <img
-                    src="/assets/images/svgs/facebook-icon.svg"
-                    alt="facebook"
-                    width="40"
-                    class="m-r-4"
-                  />
-                  Sign in with FB
-                </div>
-              </button>
-            </div>
-          </div> -->
-
-          <!-- <div class="or-border m-t-30">or sign up with</div> -->
 
           <form class="m-t-30"  #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" >
-            <div *ngIf="step === 1" >
+
+            <div class="row">
+              <div class="col-md-6">
                 <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
                 >First Name</mat-label
               >
               <mat-form-field appearance="outline" class="w-100"  color="primary">
-                <input matInput [(ngModel)]="first_name" name="first_name" />
+                <input matInput [(ngModel)]="first_name" name="first_name" type="text" />
               </mat-form-field>
-              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-                >last Name</mat-label
-              >
-              <mat-form-field appearance="outline" class="w-100"  color="primary">
-                <input matInput [(ngModel)]="last_name" name="last_name" />
-              </mat-form-field>
+              
               <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
                 >Phone Number</mat-label
               >
@@ -69,7 +33,7 @@
               >Email Adddress</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="email" [(ngModel)]="email" name="email"  />
+              <input matInput type="email" [(ngModel)]="email" name="email" type="email"  />
             </mat-form-field>
 
               <mat-form-field class="w-100"  >
@@ -79,31 +43,32 @@
                   <mat-option value="Female">Female</mat-option>
                 </mat-select>
               </mat-form-field>
-            <div class="text-end">
-              <button mat-raised-button color="primary" (click)="step = 2 " >Next >></button>
-            </div>
-          </div>
+              </div>
+              <div class="col-md-6">
+                <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+                >last Name</mat-label
+              >
+              <mat-form-field appearance="outline" class="w-100"  color="primary">
+                <input matInput [(ngModel)]="last_name" name="last_name" type="text" />
+              </mat-form-field>
             
-          <div *ngIf="step === 2" >
-            
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+              >Home Address</mat-label
+            >
+            <mat-form-field appearance="outline" class="w-100"  color="primary">
+              <input matInput [(ngModel)]="home_address"  name="home_address" type="text" />
+            </mat-form-field>
             <mat-form-field class="w-100"  >
               <input matInput [matDatepicker]="picker" [(ngModel)]="date_birth" name="date_birth">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Home Address</mat-label
-            >
-            <mat-form-field appearance="outline" class="w-100"  color="primary">
-              <input matInput [(ngModel)]="home_address"  name="home_address" />
-            </mat-form-field>
-            
 
             <mat-form-field  class="w-100" >
               <mat-label>Marital Status</mat-label>
               <mat-select [(ngModel)]="marital_status" name="marital_status" >
-                <mat-option value="Male">Single</mat-option>
-                <mat-option value="Female">Married</mat-option>
+                <mat-option value="Single">Single</mat-option>
+                <mat-option value="Married">Married</mat-option>
               </mat-select>
             </mat-form-field>
             <!-- password -->
@@ -115,6 +80,13 @@
               <input matInput type="password" [(ngModel)]="password" name="password" />
             </mat-form-field>
             
+              </div>
+            </div>
+            
+              
+            
+          
+            
               
             
             <br>
@@ -122,13 +94,11 @@
               Sign Up
             </button>
           
-          </div>
+          
             
             <!-- input -->
           </form>
-          <div style="text-align: end; margin-bottom: 10px; margin-top: 10px;" *ngIf="step === 2" >
-            <button mat-raised-button color="accent" (click)="step = 1 " ><< Previous </button>
-          </div>
+          
           <span class="d-block f-w-500 text-center m-t-24"
             >Already have an Account?
 
