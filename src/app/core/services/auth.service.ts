@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { ILogin, UserInfoType } from '../model/auth.model';
+import { ILogin, IRegister, UserInfoType } from '../model/auth.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -75,6 +75,10 @@ export class AuthenticationService {
           //   this.setRefreshToken(data.refreshToken)
         })
       );
+  }
+
+  public register(payload: IRegister): Observable<any>{
+    return this.httpClient.post(this.baseUrl+`/create-user-account`, payload)
   }
 
   public refreshToken(): Observable<any> {
