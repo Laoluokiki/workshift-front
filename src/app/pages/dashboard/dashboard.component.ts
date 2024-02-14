@@ -101,7 +101,7 @@ export class AppDashboardComponent {
   public yearlyChart!: Partial<yearlyChart> | any;
   public monthlyChart!: Partial<monthlyChart> | any;
 
-  displayedColumns: string[] = ['name_of_department'];
+  displayedColumns: string[] = ['department'];
   // dataSource = this.users
 
   months: month[] = [
