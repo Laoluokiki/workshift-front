@@ -10,9 +10,12 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from "../shared/shared.module";
+import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
+import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
+import { ManageRolesComponent } from './manage-roles/manage-roles.component';
 
 @NgModule({
-    declarations: [AppDashboardComponent],
+    declarations: [AppDashboardComponent, ManageAdminsComponent, ManageDepartmentsComponent, ManageRolesComponent],
     exports: [TablerIconsModule],
     imports: [
         CommonModule,

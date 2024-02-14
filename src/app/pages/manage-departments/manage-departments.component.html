@@ -1,0 +1,40 @@
+<app-page-titles [title]="'Manage Department'"></app-page-titles>
+<mat-card class="cardWithShadow mt-3">
+    <mat-card-content class="p-24">
+        <mat-card-title>Departments</mat-card-title>
+        <ng-container [ngSwitch]="deptState">
+            <div *ngSwitchCase="'deptTable'">
+                <div class="text-end my-3">
+                    <button mat-button color="primary" class="px-5 my-3" (click)="deptState = 'addDept' "> Add New
+                        &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                        </svg>
+                    </button>
+                </div>
+                <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination"></app-table>
+            </div>
+            <div *ngSwitchCase="'addDept'">
+                <div class="text-end">
+                    <button mat-button color="primary" class="px-5 my-3" (click)="deptState = 'deptTable' "> <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-backspace-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z" />
+                        </svg> &nbsp; Back</button>
+                </div>
+                <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Department Name</mat-label>
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput [(ngModel)]="name_of_department" name="name_of_department" type="text" />
+                    </mat-form-field>
+                    <button mat-flat-button color="primary" class="w-100">
+                        Create Department
+                    </button>
+                </form>
+            </div>
+        </ng-container>
+
+    </mat-card-content>
+</mat-card>
