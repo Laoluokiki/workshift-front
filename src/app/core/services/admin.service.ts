@@ -21,6 +21,14 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl+`/departments`)
   }
 
+  public createDept(payload: any){
+    return this.httpClient.post(this.baseUrl+`/create-dept`, payload)
+  }
+
+  public updateDept(payload: any){
+    return this.httpClient.patch(this.httpClient+`/create-dept`, payload)
+  }
+
   public createAdmin(payload: ICreateAdmin){
     return this.httpClient.post(this.baseUrl+`/admin-user`, payload)
   }
@@ -32,4 +40,17 @@ export class AdminService {
   public updateAdmin(payload: any){
     return this.httpClient.patch(this.baseUrl+``, payload)
   }
+
+  public createRoles(payload: any){
+    return this.httpClient.post(this.baseUrl+`/create-roles`, payload)
+  }
+
+  public updateRoles(payload: any){
+    return this.httpClient.patch(this.baseUrl+`/create-roles`, payload)
+  }
+
+  public getRoles(){
+    return this.httpClient.get(this.baseUrl+`/roles`)
+  }
+
 }

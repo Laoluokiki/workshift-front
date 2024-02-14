@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -21,6 +22,6 @@ export const PagesRoutes: Routes = [
   },
   {
     path: 'manage-admins',
-    component: ManageDepartmentsComponent
+    component: ManageAdminsComponent
   }
 ];

@@ -17,6 +17,7 @@ import {
 } from 'ng-apexcharts';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { UserResponse } from 'src/app/core/model/userResponse.model';
+import { IPagination, ITableColumn } from 'src/app/core/model/table.model';
 
 interface month {
   value: string;
@@ -370,6 +371,47 @@ export class AppDashboardComponent {
     this.getAllUsers();
     this.getAllDepts();
   }
+
+  public deptColumns: ITableColumn[] = [
+    {
+      name: "Department",
+      type: "text",
+      key: "name_of_department"
+    },
+    
+  ];
+
+  public userColumns: ITableColumn[] = [
+    {
+      name: "First Names",
+      type: "text",
+      key: "first_name"
+    },
+    {
+      name: "Last Names",
+      type: "text",
+      key: "last_name"
+    },
+    {
+      name: " Email",
+      type: "text",
+      key: "email"
+    },
+    {
+      name: "Date Joined",
+      type: "date",
+      key: "date_created"
+    }
+    
+  ];
+
+  public pagination: IPagination = {
+    next: "",
+    previous: "",
+    hasNext: false,
+    hasPrevious: false,
+    total: 0,
+  };
   // integration started
   getAllUsers(){
     this.adminService.getAllUser().subscribe((response: any)=>{
