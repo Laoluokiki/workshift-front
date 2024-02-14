@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonActionTypes, IActionButton } from 'src/app/core/models/table.model';
+import { ButtonActionTypes, IActionButton } from 'src/app/core/model/table.model';
 
 @Component({
   selector: 'app-page-titles',

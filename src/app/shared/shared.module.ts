@@ -5,6 +5,13 @@ import { PageTitlesComponent } from './components/page-titles/page-titles.compon
 import { TableUiComponent } from './components/table/table.component';
 import { SearchUiComponent } from './components/search-ui/search-ui.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { TablerIconsModule } from 'angular-tabler-icons';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +22,16 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     SearchUiComponent,
     PaginatorComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TablerIconsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatTableModule,
+    RouterModule,
+    MatTooltipModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     CalendarComponent,
     PageTitlesComponent,
