@@ -2686,7 +2686,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"angular-tabler-icons@^2.7.0":
+"angular-tabler-icons@^2.46.0":
   "integrity" "sha512-H29dbl4eCjJAfBTEL1CK3O/1Xb68TNA8xeyb9k2BwVb8V2WUqq3dROiPU0QKlAGjl07ezPLW0O2CyhG0YjuUKA=="
   "resolved" "https://registry.npmjs.org/angular-tabler-icons/-/angular-tabler-icons-2.46.0.tgz"
   "version" "2.46.0"
