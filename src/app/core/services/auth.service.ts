@@ -47,7 +47,7 @@ export class AuthenticationService {
     localStorage.clear();
   }
 
-  public login(payload: ILogin, userType: 'admin' | 'user'): Observable<any> {
+  public login(payload: ILogin): Observable<any> {
     const formData = new FormData();
     formData.append('grant_type', '');
     formData.append('username', payload.username);
@@ -56,29 +56,27 @@ export class AuthenticationService {
     formData.append('client_id', '');
     formData.append('client_secret', '');
 
-    return this.httpClient
-      .post(`${this.baseUrl}/${userType}-login`, formData)
-      .pipe(
-        tap((result: any) => {
-          this.clearStorage();
+    return this.httpClient.post(`${this.baseUrl}/admin-login`, formData).pipe(
+      tap((result: any) => {
+        this.clearStorage();
 
-          this.setToken(result.access_token);
+        this.setToken(result.access_token);
 
-          const userInfo: UserInfoType = {
-            username: payload.username,
-            firstName: '',
-            lastName: '',
-            email: '',
-          };
+        const userInfo: UserInfoType = {
+          username: payload.username,
+          firstName: '',
+          lastName: '',
+          email: '',
+        };
 
-          this.setUserInfo(userInfo);
-          //   this.setRefreshToken(data.refreshToken)
-        })
-      );
+        this.setUserInfo(userInfo);
+        //   this.setRefreshToken(data.refreshToken)
+      })
+    );
   }
 
-  public register(payload: IRegister): Observable<any>{
-    return this.httpClient.post(this.baseUrl+`/create-user-account`, payload)
+  public register(payload: IRegister): Observable<any> {
+    return this.httpClient.post(this.baseUrl + `/create-user-account`, payload);
   }
 
   public refreshToken(): Observable<any> {
