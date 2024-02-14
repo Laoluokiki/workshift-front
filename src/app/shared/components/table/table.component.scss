@@ -1,0 +1,57 @@
+table {
+    width: 100%;
+  }
+  .router {
+    color: #111e77;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .active {
+    background: #ccffcc;
+    padding-inline: 10px;
+    padding-block: 2px;
+    border-radius: 5px;
+    color: #05a34a;
+    font-weight: 500;
+  }
+  
+  .inactive {
+    background: #fedada;
+    padding-inline: 10px;
+    padding-block: 2px;
+    border-radius: 5px;
+    color: red;
+    font-weight: 500;
+  }
+  .processing {
+    background: orange;
+    padding-inline: 10px;
+    padding-block: 2px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+  }
+  .retry {
+    padding: 8px;
+  
+  }
+  .retry span {
+    cursor: pointer;
+  }
+  
+  .error {
+    background: red;
+    padding-inline: 10px;
+    padding-block: 2px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  
+  
