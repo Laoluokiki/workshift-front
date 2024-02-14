@@ -36,7 +36,7 @@ export class IHttpInterceptor implements HttpInterceptor {
     const token = localStorage['token']?.replaceAll('"', '') || '';
     const modifiedRequest = request.clone({
       setHeaders: {
-        Authorization: token,
+        Authorization: `bearer`+" "+token,
       },
     });
 
