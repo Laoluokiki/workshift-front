@@ -1,11 +1,11 @@
-<!-- <app-page-titles [title]="'Manage Department'"></app-page-titles>
+<app-page-titles [title]="'Manage Department'"></app-page-titles>
 <mat-card class="cardWithShadow mt-3">
     <mat-card-content class="p-24">
         <mat-card-title>Departments</mat-card-title>
         <ng-container [ngSwitch]="roleState">
-            <div *ngSwitchCase="'deptTable'">
+            <div *ngSwitchCase="'roleTable'">
                 <div class="text-end my-3">
-                    <button mat-button color="primary" class="px-5 my-3" (click)="deptState = 'addDept' "> Add New
+                    <button mat-button color="primary" class="px-5 my-3" (click)="roleState = 'addRole' "> Add New
                         &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                             <path
@@ -13,18 +13,18 @@
                         </svg>
                     </button>
                 </div>
-                <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination"></app-table>
+                <app-table [columns]="roleColumns" [data]="roles" [pagination]="pagination"></app-table>
             </div>
             <div *ngSwitchCase="'addDept'">
                 <div class="text-end">
-                    <button mat-button color="primary" class="px-5 my-3" (click)="deptState = 'deptTable' "> <svg
+                    <button mat-button color="primary" class="px-5 my-3" (click)="roleState = 'roleTable' "> <svg
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-backspace-fill" viewBox="0 0 16 16">
                             <path
                                 d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z" />
                         </svg> &nbsp; Back</button>
                 </div>
-                <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                <!-- <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Department Name</mat-label>
                     <mat-form-field appearance="outline" class="w-100" color="primary">
                         <input matInput [(ngModel)]="name_of_department" name="name_of_department" type="text" />
@@ -32,9 +32,9 @@
                     <button mat-flat-button color="primary" class="w-100">
                         Create Department
                     </button>
-                </form>
+                </form> -->
             </div>
         </ng-container>
 
     </mat-card-content>
-</mat-card> -->
+</mat-card>
