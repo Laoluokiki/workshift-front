@@ -5,15 +5,25 @@ export const navItems: NavItem[] = [
     navCap: 'Home',
   },
   {
-    displayName: 'Manage Users',
+    displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/main',
   },
   {
+    displayName: 'Manage Users',
+    iconName: 'layout-dashboard',
+    route: '/main/manage-users',
+  },
+  {
     displayName: 'Manage Departments',
     iconName: 'layout-dashboard',
-    route: '/main',
+    route: '/main/manage-dept',
   },
+  {
+    displayName: 'Manage Admins',
+    iconName: 'layout-dashboard',
+    route: '/main/manage-admins'
+  }
   // {
   //   navCap: 'Ui Components',
   // },

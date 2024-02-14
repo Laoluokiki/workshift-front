@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -12,6 +13,14 @@ export const PagesRoutes: Routes = [
   },
   {
     path: 'manage-users',
+    component: ManageUsersComponent
+  },
+  {
+    path: 'manage-dept',
+    component: ManageDepartmentsComponent
+  },
+  {
+    path: 'manage-admins',
     component: ManageDepartmentsComponent
   }
 ];
