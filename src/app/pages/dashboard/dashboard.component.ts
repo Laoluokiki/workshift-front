@@ -15,6 +15,8 @@ import {
   ApexMarkers,
   ApexResponsive,
 } from 'ng-apexcharts';
+import { AdminService } from 'src/app/core/services/admin.service';
+import { UserResponse } from 'src/app/core/model/userResponse.model';
 
 interface month {
   value: string;
@@ -35,7 +37,6 @@ export interface salesOverviewChart {
   grid: ApexGrid;
   marker: ApexMarkers;
 }
-
 export interface yearlyChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -86,44 +87,7 @@ interface productcards {
   rprice: string;
 }
 
-const ELEMENT_DATA: productsData[] = [
-  {
-    id: 1,
-    imagePath: 'assets/images/profile/user-1.jpg',
-    uname: 'Sunil Joshi',
-    position: 'Web Designer',
-    productName: 'Elite Admin',
-    budget: 3.9,
-    priority: 'low',
-  },
-  {
-    id: 2,
-    imagePath: 'assets/images/profile/user-2.jpg',
-    uname: 'Andrew McDownland',
-    position: 'Project Manager',
-    productName: 'Real Homes Theme',
-    budget: 24.5,
-    priority: 'medium',
-  },
-  {
-    id: 3,
-    imagePath: 'assets/images/profile/user-3.jpg',
-    uname: 'Christopher Jamil',
-    position: 'Project Manager',
-    productName: 'MedicalPro Theme',
-    budget: 12.8,
-    priority: 'high',
-  },
-  {
-    id: 4,
-    imagePath: 'assets/images/profile/user-4.jpg',
-    uname: 'Nirav Joshi',
-    position: 'Frontend Engineer',
-    productName: 'Hosting Press HTML',
-    budget: 2.4,
-    priority: 'critical',
-  },
-];
+
 
 @Component({
   selector: 'app-dashboard',
@@ -132,13 +96,13 @@ const ELEMENT_DATA: productsData[] = [
 })
 export class AppDashboardComponent {
   @ViewChild('chart') chart: ChartComponent = Object.create(null);
-
+  users: any = [];
   public salesOverviewChart!: Partial<salesOverviewChart> | any;
   public yearlyChart!: Partial<yearlyChart> | any;
   public monthlyChart!: Partial<monthlyChart> | any;
 
-  displayedColumns: string[] = ['assigned', 'name', 'priority', 'budget'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['name_of_department'];
+  // dataSource = this.users
 
   months: month[] = [
     { value: 'mar', viewValue: 'March 2023' },
@@ -220,8 +184,11 @@ export class AppDashboardComponent {
       rprice: '375',
     },
   ];
+  allDept: any;
 
-  constructor() {
+  constructor(
+    private adminService: AdminService
+  ) {
     // sales overview chart
     this.salesOverviewChart = {
       series: [
@@ -400,5 +367,22 @@ export class AppDashboardComponent {
         },
       },
     };
+    this.getAllUsers();
+    this.getAllDepts();
   }
+  // integration started
+  getAllUsers(){
+    this.adminService.getAllUser().subscribe((response: any)=>{
+      console.log(response)
+      this.users = response
+    })
+  }
+
+  getAllDepts(){
+    this.adminService.getAllDept().subscribe((response: any)=>{
+      console.log(response)
+      this.allDept = response
+    })
+  }
+
 }
