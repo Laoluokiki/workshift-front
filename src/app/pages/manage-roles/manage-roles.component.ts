@@ -36,14 +36,14 @@ updatedMaxHour: any;
     this.route.params.subscribe(params => {
       // Access the id parameter
       this.departmentId = params['id'];
-      console.log(this.departmentId, 'i am id')
+      // console.log(this.departmentId, 'i am id')
     });
     this.getAllDepts()
   }
   getAllRoles(){
     this.adminService.getRoles().subscribe((response: any)=>{
       this.roles = response
-      console.log(response)
+      // console.log(response)
       const filteredRole = this.roles.filter((item: { department_id: any; }) => item.department_id === this.departmentId)
       this.departmentRoles = filteredRole
     },error =>{
@@ -53,11 +53,11 @@ updatedMaxHour: any;
 
   getAllDepts(){
     this.adminService.getAllDept().subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.allDept = response
       const selectedDept = response.filter((item: { id: any; }) => item.id === parseInt(this.departmentId))
       this.selectedDept = selectedDept[0]
-      console.log(selectedDept)
+      // console.log(selectedDept)
     },error =>{
       this.notifier.error(error.statusText)
     })
@@ -133,7 +133,7 @@ updatedMaxHour: any;
     existingFormData.department_id = this.departmentId;
 
     this.adminService.createRoles(existingFormData).subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       if(response){
         this.notifier.success('Role Added Successfully!')
         this.roleState = "roleTable";

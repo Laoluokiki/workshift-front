@@ -49,10 +49,10 @@ formState: "first" | "second" = "first"
 
     console.log(body)
     this.authService.register(body).subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.notifier.success('Welcome Aboard! '+response.first_name)
     },error =>{
-      console.log(error.error.detail)
+      // console.log(error.error.detail)
     })
 
     form.reset()

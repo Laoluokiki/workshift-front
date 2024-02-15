@@ -83,7 +83,7 @@
     <mat-card class="cardWithShadow">
       <mat-card-content class="p-24">
         <mat-card-title>Departments</mat-card-title>
-        <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination"  ></app-table>
+        <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination" [actionButtons]="actionButtons" (onactionTrigger)="takeAction($event)"   ></app-table>
       </mat-card-content>
     </mat-card>
   </div>
