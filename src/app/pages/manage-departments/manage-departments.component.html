@@ -13,7 +13,7 @@
                         </svg>
                     </button>
                 </div>
-                <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination"></app-table>
+                <app-table [columns]="deptColumns" [data]="allDept" [pagination]="pagination"  [actionButtons]="actionButtons" (onactionTrigger)="takeAction($event)" ></app-table>
             </div>
             <div *ngSwitchCase="'addDept'">
                 <div class="text-end">

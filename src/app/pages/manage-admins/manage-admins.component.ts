@@ -10,10 +10,14 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 })
 export class ManageAdminsComponent {
   allAdmins: any;
-  adminState: "addAdmin" | "adminTable" = "adminTable"
+  adminState: "addAdmin" | "adminTable" | "updateAdmin" = "adminTable"
 username: any;
 email: any;
 password: any;
+  selectedAdmin: any;
+updated_username: any;
+updated_email: any;
+updated_password: any;
   constructor(
     private adminService: AdminService,
     private notifier: NotificationService
@@ -50,8 +54,9 @@ password: any;
   takeAction(e: any){
     let result: any;
     switch (e?.action) {
-      case 'delete':
-        result = ''
+      case 'edit':
+        result = this.selectedAdmin = e?.record
+        this.adminState = "updateAdmin"
         break;
         case 'view':
           result =''
@@ -65,14 +70,9 @@ password: any;
 
   public actionButtons: IActionButton[] = [
     {
-      label: "Delete",
-      action: "delete",
-      icon: "trash",
-    },
-    {
-      label: "View",
-      action: "view",
-      icon: "eye"
+      label: "Update",
+      action: "edit",
+      icon: "edit",
     }
   ];
 
@@ -111,6 +111,26 @@ password: any;
         this.adminState = "adminTable"
       }
       
+    }, error=>{
+      this.notifier.error(error.error.message)
+    })
+  }
+
+  onUpdate(form: any){
+    const body = {
+      "username": this.updated_username || this.selectedAdmin.username,
+      "email": this.updated_email || this.selectedAdmin.email,
+      "disabled": true,
+      "password": this.updated_password || this.selectedAdmin.password
+    }
+    console.log(body)
+    this.adminService.updateAdmin(body, this.selectedAdmin.username).subscribe((response: any)=>{
+      console.log(response)
+      if(response){
+        this.notifier.success('Update Successfull!')
+        this.adminState = "adminTable";
+        this.getAllAdmin()
+      }
     }, error=>{
       this.notifier.error(error.error.message)
     })

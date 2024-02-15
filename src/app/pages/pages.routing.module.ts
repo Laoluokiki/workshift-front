@@ -3,6 +3,7 @@ import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
+import { ManageRolesComponent } from './manage-roles/manage-roles.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -23,5 +24,9 @@ export const PagesRoutes: Routes = [
   {
     path: 'manage-admins',
     component: ManageAdminsComponent
+  },
+  {
+    path: 'view-roles/:id',
+    component: ManageRolesComponent
   }
 ];
