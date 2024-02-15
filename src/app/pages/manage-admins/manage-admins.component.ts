@@ -124,7 +124,7 @@ updated_password: any;
       "password": this.updated_password || this.selectedAdmin.password
     }
     console.log(body)
-    this.adminService.updateAdmin(body, this.selectedAdmin.username).subscribe((response: any)=>{
+    this.adminService.updateAdmin(body).subscribe((response: any)=>{
       console.log(response)
       if(response){
         this.notifier.success('Update Successfull!')

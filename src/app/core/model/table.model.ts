@@ -16,7 +16,8 @@ type TableColumnType =
   | "status"
   | "elipsis"
   | "balance"
-  | "capitalText";
+  | "capitalText"
+  | "hournumber"
 
 export type ButtonActionTypes =
   | "add"

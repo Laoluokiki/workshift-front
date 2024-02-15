@@ -4,6 +4,7 @@ import { ManageDepartmentsComponent } from './manage-departments/manage-departme
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { ManageRolesComponent } from './manage-roles/manage-roles.component';
+import { ManageShiftComponent } from './manage-shift/manage-shift.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -28,5 +29,9 @@ export const PagesRoutes: Routes = [
   {
     path: 'view-roles/:id',
     component: ManageRolesComponent
+  },
+  {
+    path: 'manage-shift',
+    component: ManageShiftComponent
   }
 ];
