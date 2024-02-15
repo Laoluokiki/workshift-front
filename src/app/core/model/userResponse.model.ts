@@ -15,3 +15,13 @@ export interface UserResponse {
     
 }
 
+
+export interface IShift {
+    start_time: number
+    no_of_resources: number
+    date_created: string
+    end_time: number
+    id: number
+    role_id: number
+  }
+  

@@ -5,35 +5,12 @@
     <div class="col-lg-12">
       <mat-card class="cardWithShadow">
         <mat-card-content class="p-24">
-          <mat-card-title>Users</mat-card-title>
-          <div class="text-end my-3">
-            <button
-              mat-button
-              color="primary"
-              class="px-5 my-3"
-              (click)="userPageState = 'addUser'"
-            >
-              Add New &nbsp;
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-plus-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
-                />
-              </svg>
-            </button>
-          </div>
           <app-table
             [columns]="userColumns"
             [data]="users"
-            [pagination]="pagination"
             [actionButtons]="actionButtons"
             (onactionTrigger)="takeAction($event)"
+            [showPagination]="false"
           ></app-table>
         </mat-card-content>
       </mat-card>
@@ -81,9 +58,9 @@
               <p><b>Date Created:</b> {{ currentUser.date_created }}</p>
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
               <h6><b>User Shifts</b></h6>
-            </div>
+            </div> -->
 
             <div class="mt-4">
               <h6><b>User Roles</b></h6>

@@ -1,0 +1,185 @@
+<app-page-titles [title]="'Manage shift'"></app-page-titles>
+<mat-card class="cardWithShadow mt-3">
+  <mat-card-content class="p-24">
+    <mat-card-title>Shifts</mat-card-title>
+    <ng-container [ngSwitch]="shiftState">
+      <div *ngSwitchCase="'shiftTable'">
+        <div class="text-end my-3">
+          <button
+            mat-button
+            color="primary"
+            class="px-5 my-3"
+            (click)="shiftState = 'addShift'"
+          >
+            Add New &nbsp;
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus-circle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
+              />
+            </svg>
+          </button>
+        </div>
+        <app-table
+          [columns]="shiftColumns"
+          [data]="shifts"
+          [actionButtons]="actionButtons"
+          (onactionTrigger)="takeAction($event)"
+          [showPagination]="false"
+        ></app-table>
+      </div>
+      <div *ngSwitchCase="'addShift'">
+        <div class="text-end">
+          <button
+            mat-button
+            color="primary"
+            class="px-5 my-3"
+            (click)="shiftState = 'shiftTable'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-backspace-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z"
+              />
+            </svg>
+            &nbsp; Back
+          </button>
+        </div>
+        <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >No. of resources</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="no_of_resources"
+              name="no_of_resources"
+              type="number"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >Start Time</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="start_time"
+              name="start_time"
+              type="number"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >End Time</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="end_time"
+              name="end_time"
+              type="text"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >Role</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select [(ngModel)]="role_id" name="role_id">
+              <mat-option [value]="role?.id" *ngFor="let role of roles">
+                {{ role.name_of_role }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-flat-button color="primary" class="w-100">
+            Create Shift
+          </button>
+        </form>
+      </div>
+      <div *ngSwitchCase="'updateShift'">
+        <div class="text-end">
+          <button
+            mat-button
+            color="primary"
+            class="px-5 my-3"
+            (click)="shiftState = 'shiftTable'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-backspace-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z"
+              />
+            </svg>
+            &nbsp; Back
+          </button>
+        </div>
+        <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onUpdate(myForm)">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >No. of resources</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="u_no_of_resources"
+              name="u_no_of_resources"
+              type="number"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >Start Time</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="u_start_time"
+              name="u_start_time"
+              type="number"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >End Time</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input
+              matInput
+              [(ngModel)]="u_end_time"
+              name="u_end_time"
+              type="text"
+            />
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+            >Role</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select [(ngModel)]="u_role_id" name="u_role_id">
+              <mat-option [value]="role?.id" *ngFor="let role of roles">
+                {{ role.name_of_role }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-flat-button color="primary" class="w-100">
+            Update Shift
+          </button>
+        </form>
+      </div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

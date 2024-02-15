@@ -14,6 +14,8 @@ import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
 import { ManageRolesComponent } from './manage-roles/manage-roles.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageShiftComponent } from './manage-shift/manage-shift.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     ManageDepartmentsComponent,
     ManageRolesComponent,
     ManageUsersComponent,
+    ManageShiftComponent
   ],
   exports: [TablerIconsModule],
   imports: [
@@ -32,6 +35,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     RouterModule.forChild(PagesRoutes),
     TablerIconsModule.pick(TablerIcons),
     SharedModule,
+    MatSelectModule
   ],
 })
 export class PagesModule {}

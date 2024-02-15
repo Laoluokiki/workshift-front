@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ICreateAdmin, ICreateRole } from '../model/userRequest.model';
+import {
+  ICreateAdmin,
+  ICreateRole,
+  ICreateShift,
+} from '../model/userRequest.model';
 
 @Injectable({
   providedIn: 'root',
@@ -48,12 +52,20 @@ export class AdminService {
   public createRoles(payload: any) {
     return this.httpClient.post(this.baseUrl + `/create-roles`, payload);
   }
-
+  public createShift(payload: ICreateShift) {
+    return this.httpClient.post(this.baseUrl + `/create-shift`, payload);
+  }
+  public updateShift(payload: ICreateShift, shift_id: number) {
+    return this.httpClient.put(this.baseUrl + `/update-shift?shift_id=${shift_id}`, payload);
+  }
   public updateRoles(payload: any) {
     return this.httpClient.patch(this.baseUrl + `/create-roles`, payload);
   }
 
   public getRoles() {
     return this.httpClient.get(this.baseUrl + `/roles`);
+  }
+  public getShifts() {
+    return this.httpClient.get(this.baseUrl + `/shift-created-by-admin`);
   }
 }

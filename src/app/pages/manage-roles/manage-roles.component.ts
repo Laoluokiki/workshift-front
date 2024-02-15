@@ -123,7 +123,8 @@ updatedMaxHour: any;
       label: "Update",
       action: "edit",
       icon: "edit",
-    }
+    },
+    
   ];
   
 
@@ -153,7 +154,7 @@ updatedMaxHour: any;
       "maximum_hour": this.updatedMaxHour || this.selectedRole.maximum_hour
     }
     console.log(body)
-    this.adminService.updateRoles(body, this.selectedRole.id.toString()).subscribe((response: any)=>{
+    this.adminService.updateRoles(body).subscribe((response: any)=>{
       this.notifier.success('Update Successfull!')
       this.roleState = "roleTable"
       this.getAllRoles()

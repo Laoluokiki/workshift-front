@@ -168,6 +168,14 @@
           {{ row[column.key] | currency }}
         </td>
       </ng-container>
+      <ng-container *ngIf="column.type === 'hournumber'">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ column.name }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row[column.key] | numberToHourMinute }}
+        </td>
+      </ng-container>
 
       <ng-container *ngIf="column.type === 'action'">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>

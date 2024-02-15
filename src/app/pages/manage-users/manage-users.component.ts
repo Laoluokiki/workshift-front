@@ -148,11 +148,6 @@ export class ManageUsersComponent {
 
   public actionButtons: IActionButton[] = [
     {
-      label: 'Delete',
-      action: 'delete',
-      icon: 'trash',
-    },
-    {
       label: 'View',
       action: 'view',
       icon: 'eye',
