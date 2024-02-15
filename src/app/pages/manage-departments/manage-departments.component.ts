@@ -42,7 +42,7 @@ name_of_department: any;
     switch (e?.action) {
       case 'view':
         result = this.selectedDept = e?.record
-        console.log(this.selectedDept)
+        // console.log(this.selectedDept)
         this.router.navigate([`/main/view-roles/${this.selectedDept.id}`]);
         break;
         case 'view':
@@ -65,7 +65,7 @@ name_of_department: any;
 
   getAllDepts(){
     this.adminService.getAllDept().subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.allDept = response
     },error =>{
       this.notifier.error(error.statusText)
@@ -74,7 +74,7 @@ name_of_department: any;
 
   onSubmit(form: any){
     this.adminService.createDept(form.value).subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       if(response){
         this.notifier.success('Department Created!')
         form.reset()

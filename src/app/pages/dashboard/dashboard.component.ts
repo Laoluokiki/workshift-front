@@ -17,7 +17,8 @@ import {
 } from 'ng-apexcharts';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { UserResponse } from 'src/app/core/model/userResponse.model';
-import { IPagination, ITableColumn } from 'src/app/core/model/table.model';
+import { IActionButton, IPagination, ITableColumn } from 'src/app/core/model/table.model';
+import { Router } from '@angular/router';
 
 interface month {
   value: string;
@@ -186,9 +187,11 @@ export class AppDashboardComponent {
     },
   ];
   allDept: any;
+  selectedDept: any;
 
   constructor(
-    private adminService: AdminService
+    private adminService: AdminService,
+    private router: Router
   ) {
     // sales overview chart
     this.salesOverviewChart = {
@@ -378,7 +381,38 @@ export class AppDashboardComponent {
       type: "text",
       key: "name_of_department"
     },
+    {
+      name: "Actions",
+      type: "action",
+      key: "action"
+    }
     
+  ];
+
+  takeAction(e: any){
+    let result: any;
+    switch (e?.action) {
+      case 'view':
+        result = this.selectedDept = e?.record
+        // console.log(this.selectedDept)
+        this.router.navigate([`/main/view-roles/${this.selectedDept.id}`]);
+        break;
+        case 'view':
+          result =''
+          break;
+      default:
+        result = "Other";
+    }
+
+    return result;
+  }
+
+  public actionButtons: IActionButton[] = [
+    {
+      label: "View",
+      action: "view",
+      icon: "eye",
+    }
   ];
 
   public userColumns: ITableColumn[] = [
@@ -415,14 +449,14 @@ export class AppDashboardComponent {
   // integration started
   getAllUsers(){
     this.adminService.getAllUser().subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.users = response
     })
   }
 
   getAllDepts(){
     this.adminService.getAllDept().subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.allDept = response
     })
   }

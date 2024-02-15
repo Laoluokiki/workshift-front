@@ -15,7 +15,7 @@ export class ManageUsersComponent {
 
   getAllUsers(){
     this.adminService.getAllUser().subscribe((response: any)=>{
-      console.log(response)
+      // console.log(response)
       this.users = response
     })
   }
