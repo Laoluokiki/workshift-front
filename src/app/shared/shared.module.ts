@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FeatherIconModule } from '../core/directives/feather-icon/feather-icon.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    FeatherIconModule
   ],
   exports: [
     CalendarComponent,
