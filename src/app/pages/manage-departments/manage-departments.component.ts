@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IPagination, ITableColumn } from 'src/app/core/model/table.model';
+import { Router } from '@angular/router';
+import { IActionButton, IPagination, ITableColumn } from 'src/app/core/model/table.model';
 import { ICreateDept } from 'src/app/core/model/userRequest.model';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
@@ -13,10 +14,12 @@ export class ManageDepartmentsComponent {
   allDept: any;
   deptState: "deptTable" | "addDept" | "updateDept" = "deptTable"
 name_of_department: any;
+  selectedDept: any;
 
   constructor(
     private adminService: AdminService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private router: Router
   ){
     this.getAllDepts()
   }
@@ -27,13 +30,45 @@ name_of_department: any;
       type: "text",
       key: "name_of_department"
     },
-    
+    {
+      name: "Actions",
+      type: "action",
+      key: "action"
+    }
+  ];
+
+  takeAction(e: any){
+    let result: any;
+    switch (e?.action) {
+      case 'view':
+        result = this.selectedDept = e?.record
+        console.log(this.selectedDept)
+        this.router.navigate([`/main/view-roles/${this.selectedDept.id}`]);
+        break;
+        case 'view':
+          result =''
+          break;
+      default:
+        result = "Other";
+    }
+
+    return result;
+  }
+
+  public actionButtons: IActionButton[] = [
+    {
+      label: "View",
+      action: "view",
+      icon: "eye",
+    }
   ];
 
   getAllDepts(){
     this.adminService.getAllDept().subscribe((response: any)=>{
       console.log(response)
       this.allDept = response
+    },error =>{
+      this.notifier.error(error.statusText)
     })
   }
 
@@ -48,8 +83,8 @@ name_of_department: any;
       }else{
 
       }
-    },error=>{
-      this.notifier.error(error.error.message)
+    },error =>{
+      this.notifier.error(error.statusText)
     })
   }
 

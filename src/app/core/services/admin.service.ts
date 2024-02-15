@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ICreateAdmin } from '../model/userRequest.model';
+import { ICreateAdmin, ICreateRole } from '../model/userRequest.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class AdminService {
   }
 
   public updateDept(payload: any){
-    return this.httpClient.patch(this.httpClient+`/create-dept`, payload)
+    return this.httpClient.put(this.httpClient+`/create-dept`, payload)
   }
 
   public createAdmin(payload: ICreateAdmin){
@@ -37,16 +37,16 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl+`/admin`)
   }
 
-  public updateAdmin(payload: any){
-    return this.httpClient.patch(this.baseUrl+``, payload)
+  public updateAdmin(payload: any, username: any){
+    return this.httpClient.put(this.baseUrl+`/update-admin/${username}`, payload)
   }
 
-  public createRoles(payload: any){
+  public createRoles(payload: ICreateRole){
     return this.httpClient.post(this.baseUrl+`/create-roles`, payload)
   }
 
-  public updateRoles(payload: any){
-    return this.httpClient.patch(this.baseUrl+`/create-roles`, payload)
+  public updateRoles(payload: any, roleId: any){
+    return this.httpClient.put(this.baseUrl+`/update-roles?role_id=${roleId}`, payload)
   }
 
   public getRoles(){
