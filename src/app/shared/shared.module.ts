@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeatherIconModule } from '../core/directives/feather-icon/feather-icon.module';
+import { NumberToHourMinutePipe } from '../core/pipes/NumberToHour';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FeatherIconModule } from '../core/directives/feather-icon/feather-icon.
     TableUiComponent,
     SearchUiComponent,
     PaginatorComponent,
+    NumberToHourMinutePipe
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { FeatherIconModule } from '../core/directives/feather-icon/feather-icon.
     TableUiComponent,
     SearchUiComponent,
     PaginatorComponent,
+    NumberToHourMinutePipe
   ],
 })
 export class SharedModule {}

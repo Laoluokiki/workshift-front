@@ -22,8 +22,13 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Manage Admins',
     iconName: 'layout-dashboard',
-    route: '/main/manage-admins'
-  }
+    route: '/main/manage-admins',
+  },
+  {
+    displayName: 'Manage Shifts',
+    iconName: 'layout-dashboard',
+    route: '/main/manage-shift',
+  },
   // {
   //   navCap: 'Ui Components',
   // },
